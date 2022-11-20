@@ -13,22 +13,38 @@ if [[ -z $selected ]]; then
 # Search crates
 elif [ $selected = "search" ]; then
     read -p "Search: " query
-    cargo $selected $query
+    if [[ -z $query ]]; then
+        exit
+    else
+        cargo $selected $query
+    fi
 
 # Install binary
 elif [ $selected = "install" ]; then
     read -p "Install: " query
-    cargo $selected $query
+    if [[ -z $query ]]; then
+        exit
+    else
+        cargo $selected $query
+    fi
 
 # Create new crate
 elif [ $selected = "new" ]; then
     read -p "New: " query
-    cargo $selected $query
+    if [[ -z $query ]]; then
+        exit
+    else
+        cargo $selected $query
+    fi
 
 # Add dependency
 elif [ $selected = "add" ]; then
     read -p "Add: " query
-    cargo $selected $query
+    if [[ -z $query ]]; then
+        exit
+    else
+        cargo $selected $query
+    fi
 
 # Parse all tests and do fzf
 elif [ $selected = "select_test" ]; then
@@ -50,7 +66,11 @@ elif [ $selected = "test" ]; then
 # Read custom command
 elif [ $selected = "custom" ]; then
     read -p "Enter cargo arguments: " query
-    cargo $query
+    if [[ -z $query ]]; then
+        exit
+    else
+        cargo $selected $query
+    fi
 
 # Just run selected command
 else
