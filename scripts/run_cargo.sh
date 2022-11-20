@@ -61,7 +61,7 @@ elif [ $selected = "select_test" ]; then
 # Run all tests and enter copy mode
 elif [ $selected = "test" ]; then
     cargo $selected
-    tmux copy
+    tmux copy-mode 
 
 # Read custom command
 elif [ $selected = "custom" ]; then
@@ -81,5 +81,7 @@ echo
 echo "COMPLETE"
 
 # Prevent window to close
-read
+tmux send-keys 'k0'
+read -n 1 -s
+
 
