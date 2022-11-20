@@ -11,14 +11,14 @@ so I decided to write a universal solution for any terminal that has tmux.
 * Fuzzy search of concreate test
 
 ## Dependencies
-* [Fzf][https://github.com/junegunn/fzf]
-* [Cargo][https://github.com/rust-lang/cargo]
+* [Fzf](https://github.com/junegunn/fzf)
+* [Cargo](https://github.com/rust-lang/cargo)
 
 ## Screenshots
 ![Alt text](./screenshots/1.png "Default start view")
 
 ## Install
-### Add with [tpm][https://github.com/tmux-plugins/tpm]
+### Add with [tpm](https://github.com/tmux-plugins/tpm)
 ```bash
 set -g @plugin 'idevtier/tmux-cargo'
 ```
