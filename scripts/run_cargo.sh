@@ -3,6 +3,18 @@
 commands=`echo "build check clean doc new init add run test select_test bench update publish custom" | tr ' ' '\n'`
 selected=`printf "$commands" | fzf`
 
+function read_query() {
+    local query_message=$1
+
+    read -p "$query_message: " query
+
+    if [[ -z $query ]]; then
+        exit
+    fi
+
+    return query
+}
+
 # Go to crate root
 cd $1
 
@@ -12,39 +24,23 @@ if [[ -z $selected ]]; then
 
 # Search crates
 elif [ $selected = "search" ]; then
-    read -p "Search: " query
-    if [[ -z $query ]]; then
-        exit
-    else
-        cargo $selected $query
-    fi
+    query=$(read_query "Search")
+    cargo $selected $query
 
 # Install binary
 elif [ $selected = "install" ]; then
-    read -p "Install: " query
-    if [[ -z $query ]]; then
-        exit
-    else
-        cargo $selected $query
-    fi
+    query=$(read_query "Install")
+    cargo $selected $query
 
 # Create new crate
 elif [ $selected = "new" ]; then
-    read -p "New: " query
-    if [[ -z $query ]]; then
-        exit
-    else
-        cargo $selected $query
-    fi
+    query=$(read_query "New")
+    cargo $selected $query
 
 # Add dependency
 elif [ $selected = "add" ]; then
-    read -p "Add: " query
-    if [[ -z $query ]]; then
-        exit
-    else
-        cargo $selected $query
-    fi
+    query=$(read_query "Add")
+    cargo $selected $query
 
 # Parse all tests and do fzf
 elif [ $selected = "select_test" ]; then
@@ -64,12 +60,8 @@ elif [ $selected = "test" ]; then
 
 # Read custom command
 elif [ $selected = "custom" ]; then
-    read -p "Enter cargo arguments: " query
-    if [[ -z $query ]]; then
-        exit
-    else
-        cargo $selected $query
-    fi
+    query=$(read_query "Enter cargo arguments")
+    cargo $query
 
 # Just run selected command
 else
