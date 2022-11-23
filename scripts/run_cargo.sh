@@ -71,9 +71,10 @@ fi
 echo
 echo "COMPLETE"
 
-# Prevent window to close
 tmux copy-mode 
 tmux send-keys 'k0'
+
+# Prevent window to close
 read -n 1 -s
 
 
