@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-commands=`echo "build check clean doc new init add run test select_test bench update publish" | tr ' ' '\n'`
+commands=`echo "build check clean doc new init add run test select_test bench update publish custom" | tr ' ' '\n'`
 selected=`printf "$commands" | fzf`
 
 # Go to crate root
